@@ -41,7 +41,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="To Do List" id="3pI-uB-GS8">
-                        <barButtonItem key="leftBarButtonItem" title="Edit" id="chL-3K-E1W"/>
+                        <barButtonItem key="leftBarButtonItem" title="Edit" id="chL-3K-E1W">
+                            <connections>
+                                <action selector="editBarButtonPressed:" destination="BYZ-38-t0r" id="4Q3-r9-65K"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="jmC-Wm-kM3">
                             <connections>
                                 <segue destination="JOI-xa-l2J" kind="presentation" identifier="AddItem" id="0JH-SJ-WxQ"/>
@@ -49,6 +53,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addBarButton" destination="jmC-Wm-kM3" id="ei0-oL-MHq"/>
+                        <outlet property="editBarButton" destination="chL-3K-E1W" id="RXi-2n-fCc"/>
                         <outlet property="tableView" destination="1V2-Lg-Kob" id="M5B-Vl-408"/>
                     </connections>
                 </viewController>
@@ -88,13 +94,18 @@
                                 <action selector="cancelPressed:" destination="6PF-Tq-7vY" id="ZVX-PH-qzC"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="yKB-Mm-Cd2"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="yKB-Mm-Cd2">
+                            <connections>
+                                <segue destination="vcS-3X-yhw" kind="unwind" identifier="UnwindFromSave" unwindAction="unwindFromDetailViewControllerWithSegue:" id="rSR-uL-5TK"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="toDoField" destination="7fn-Tc-ovg" id="deV-QD-ecX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mZh-gr-fdf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="vcS-3X-yhw" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3460" y="27"/>
         </scene>
